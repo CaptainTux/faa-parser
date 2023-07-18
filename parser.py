@@ -6,6 +6,8 @@ from io import BytesIO
 from urllib import request
 from zipfile import ZipFile
 
+from pathlib import Path
+
 from dms2dec.dms_convert import dms2dec
 
 NASR_DIR = 'NASR'
@@ -384,6 +386,8 @@ def write_cdr(rows):
 
 
 if __name__ == '__main__':
+    Path("out").mkdir(exist_ok=True)
+
     stardp_rows = parse_stardp()
     navaid_rows = parse_navaid_data()
     airway_rows = parse_awy()
